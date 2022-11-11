@@ -21,7 +21,7 @@ public class Register extends JFrame implements ActionListener {
         frame = new JFrame();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(400, 500);
-        frame.getContentPane().setBackground(new Color(6, 45, 49));
+        frame.getContentPane().setBackground(new Color(15, 30, 77, 255));
         frame.setLocationRelativeTo(null);
         frame.setTitle("PLM");
         frame.setLayout(null);
