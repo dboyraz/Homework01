@@ -11,9 +11,12 @@ public class MyFrame extends JFrame implements ActionListener {
     private JPanel panelTop, panelLeft, boxPanel;
     private JButton btnExit, btnChangeUser;
     private JLabel lblUser;
+    private String username;
 
 
-    public MyFrame() {
+    public MyFrame(String username) {
+
+        this.username = username;
 
         // Instantiate the frame,
         // set its properties
@@ -31,7 +34,7 @@ public class MyFrame extends JFrame implements ActionListener {
         // Instantiate the buttons,
         // add default text ,
         // add action listener
-        btnChangeUser = new JButton("Change Username");
+        btnChangeUser = new JButton("Change User");
         btnExit = new JButton("Exit");
         btnExit.addActionListener(this);
         btnChangeUser.addActionListener(this);
@@ -39,7 +42,7 @@ public class MyFrame extends JFrame implements ActionListener {
         // Instantiate the label,
         // add default text
         // set default font, size and color
-        lblUser = new JLabel("Welcome User");
+        lblUser = new JLabel("Welcome " + username);
         lblUser.setFont(new Font("Arial", Font.BOLD, 20));
         lblUser.setForeground(Color.WHITE);
 
@@ -95,11 +98,11 @@ public class MyFrame extends JFrame implements ActionListener {
             System.exit(0);
         } else if (e.getSource() == btnChangeUser) {
 
-            // Pops up an input box to change the username
-            // when the btnChangeUser is clicked
+            // Returns to login page when clicked
 
-            String value = JOptionPane.showInputDialog("Enter new user name");
-            lblUser.setText("Welcome " + value);
+
+            new Login();
+            frame.dispose();
         }
 
     }
