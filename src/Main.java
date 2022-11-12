@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
 
+        users.add(new User("a", "a"));
         new Login();
     }
 

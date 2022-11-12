@@ -9,14 +9,18 @@ public class MyFrame extends JFrame implements ActionListener {
     // Declare components
     private JFrame frame;
     private JPanel panelTop, panelLeft, boxPanel;
-    private JButton btnExit, btnChangeUser;
+    private JButton btnCustomers, btnRates, btnReports, btnSettings, btnExit, btnChangeUser;
     private JLabel lblUser;
     private String username;
+    private Color colorButton;
 
 
     public MyFrame(String username) {
 
         this.username = username;
+
+        colorButton = new Color(21, 43, 46);
+
 
         // Instantiate the frame,
         // set its properties
@@ -34,10 +38,18 @@ public class MyFrame extends JFrame implements ActionListener {
         // Instantiate the buttons,
         // add default text ,
         // add action listener
+        btnCustomers = new JButton("Customers");
+        btnRates = new JButton("Rates");
+        btnReports = new JButton("Reports");
+        btnSettings = new JButton("Settings");
         btnChangeUser = new JButton("Change User");
         btnExit = new JButton("Exit");
-        btnExit.addActionListener(this);
+        btnCustomers.addActionListener(this);
+        btnRates.addActionListener(this);
+        btnReports.addActionListener(this);
+        btnSettings.addActionListener(this);
         btnChangeUser.addActionListener(this);
+        btnExit.addActionListener(this);
 
         // Instantiate the label,
         // add default text
@@ -58,19 +70,52 @@ public class MyFrame extends JFrame implements ActionListener {
 
         // Set the layout of the panels
         panelTop.setLayout(new BorderLayout());
+        panelLeft.setLayout(new BoxLayout(panelLeft, BoxLayout.Y_AXIS));
         boxPanel.setLayout(new BoxLayout(boxPanel, BoxLayout.Y_AXIS));
 
 
         // Set maximum size of the buttons,
         // align them to right
         // add them to the panel
+        btnCustomers.setMaximumSize(new Dimension(500, 100));
+        btnRates.setMaximumSize(new Dimension(500, 100));
+        btnReports.setMaximumSize(new Dimension(500, 100));
+        btnSettings.setMaximumSize(new Dimension(500, 100));
         btnChangeUser.setMaximumSize(new Dimension(500, 100));
         btnExit.setMaximumSize(new Dimension(500, 100));
-        btnExit.setAlignmentX(1);
-        btnChangeUser.setAlignmentX(1);
-        boxPanel.add(btnChangeUser);
-        boxPanel.add(btnExit);
 
+
+        btnCustomers.setBackground(colorButton);
+        btnCustomers.setForeground(Color.WHITE);
+        btnRates.setBackground(colorButton);
+        btnRates.setForeground(Color.WHITE);
+        btnReports.setBackground(colorButton);
+        btnReports.setForeground(Color.WHITE);
+        btnSettings.setBackground(colorButton);
+        btnSettings.setForeground(Color.WHITE);
+        btnChangeUser.setBackground(colorButton);
+        btnChangeUser.setForeground(Color.WHITE);
+        btnExit.setBackground(colorButton);
+        btnExit.setForeground(Color.WHITE);
+
+        btnCustomers.setFont(new Font("Arial", Font.BOLD, 16));
+        btnRates.setFont(new Font("Arial", Font.BOLD, 16));
+        btnReports.setFont(new Font("Arial", Font.BOLD, 16));
+        btnSettings.setFont(new Font("Arial", Font.BOLD, 16));
+        btnChangeUser.setFont(new Font("Arial", Font.BOLD, 16));
+        btnExit.setFont(new Font("Arial", Font.BOLD, 16));
+        btnCustomers.setBorderPainted(false);
+        btnRates.setBorderPainted(false);
+        btnReports.setBorderPainted(false);
+        btnSettings.setBorderPainted(false);
+        btnChangeUser.setBorderPainted(false);
+        btnExit.setBorderPainted(false);
+        panelLeft.add(btnCustomers);
+        panelLeft.add(btnRates);
+        panelLeft.add(btnReports);
+        panelLeft.add(btnSettings);
+        panelLeft.add(btnChangeUser);
+        panelLeft.add(btnExit);
 
         // Set border for the user label
         lblUser.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
@@ -82,7 +127,7 @@ public class MyFrame extends JFrame implements ActionListener {
         frame.add(panelLeft, BorderLayout.WEST);
 
         // Add sub-panel and label to the top panel
-        panelTop.add(boxPanel, BorderLayout.EAST);
+        //panelTop.add(boxPanel, BorderLayout.EAST);
         panelTop.add(lblUser, BorderLayout.WEST);
 
 
@@ -104,6 +149,7 @@ public class MyFrame extends JFrame implements ActionListener {
             new Login();
             frame.dispose();
         }
+
 
     }
 }
