@@ -117,6 +117,7 @@ public class MyFrame extends JFrame implements ActionListener {
         panelLeft.add(btnChangeUser);
         panelLeft.add(btnExit);
 
+
         // Set border for the user label
         lblUser.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
