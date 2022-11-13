@@ -2,11 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 public class Login extends JFrame implements ActionListener {
 
-    // Declare components for the login frame
+    // Declare components for the Login frame
     private JFrame frame;
     private JButton btnLogin, btnExit;
     private JLabel lblUsername, lblPassword, lblTitle;
@@ -38,13 +37,13 @@ public class Login extends JFrame implements ActionListener {
         frame.setLayout(null);
 
 
-        // Instantiate the font and color used by labels
+        // Instantiate the font and color used by the labels
         font = new Font("Arial", Font.PLAIN, 19);
         fontTitle = new Font("Arial", Font.BOLD, 22);
         fontButton = new Font("Arial", Font.PLAIN, 15);
         clrText = new Color(255, 255, 255);
 
-        // Instantiate text-fields assign their fonts
+        // Instantiate text-fields and assign their fonts
         txtUsername = new JTextField();
         txtUsername.setFont(font);
         txtPassword = new JPasswordField();
@@ -128,39 +127,56 @@ public class Login extends JFrame implements ActionListener {
     public void authenticateLogin() {
 
         // Declare variables
+        // Declare bool flag to check if login is successful
         String username, password;
         boolean isLogged = false;
+        boolean wrongPassword = false;
 
         // Assign their values from text-field inputs
         username = txtUsername.getText();
         password = new String(txtPassword.getPassword());
 
 
+        // Check if username is null
         if (username == null) {
             JOptionPane.showMessageDialog(null, "Please enter a valid username!", "Error", JOptionPane.WARNING_MESSAGE);
         }
 
+        // Iterate through the list of users
         for (User user : Main.users) {
 
+            // If both username and password match
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
 
-                // If both username and password match,
+
                 // flag isLogged as true and break the loop
                 isLogged = true;
                 break;
 
 
+                // If username matches but password doesn't
+            } else if (user.getUsername().equals(username) && !user.getPassword().equals(password)) {
+                wrongPassword = true;
+                break;
+
             }
         }
 
+        // if success flag is true, login
+        // else if wrong password flag is true, show error message
+        // else ask for registration
         if (isLogged) {
 
             Object successMessage = "Login Successful!\nWelcome " + username + "!" +
                     "\nParking Lot Manager is an application that will help you run your establishment." +
                     "\nPress OK to proceed.";
             JOptionPane.showMessageDialog(null, successMessage, "Welcome", JOptionPane.INFORMATION_MESSAGE);
+
             new MyFrame(username);
             frame.dispose();
+        } else if (wrongPassword) {
+            JOptionPane.showMessageDialog(null, "Wrong password!", "Error", JOptionPane.WARNING_MESSAGE);
+
         } else {
 
             int confirmValue = JOptionPane.showConfirmDialog(null, "User does not exist, create new user?", "Error", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);

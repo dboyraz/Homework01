@@ -42,7 +42,7 @@ public class Register extends JFrame implements ActionListener {
         btnCreate = new JButton("Register");
         btnExit = new JButton("Exit");
 
-        // Set color and font for the Login button
+        // Set color and font for the Create button
         btnCreate.setFocusPainted(false);
         btnCreate.setBackground(new Color(35, 87, 94));
         btnCreate.setFont(fontButton);
@@ -65,7 +65,7 @@ public class Register extends JFrame implements ActionListener {
         lblPassword.setFont(font);
         lblTitle.setFont(fontTitle);
 
-        // Add action listener to login and exit buttons
+        // Add action listener to create and exit buttons
         btnCreate.addActionListener(this);
         btnExit.addActionListener(this);
 
@@ -86,7 +86,7 @@ public class Register extends JFrame implements ActionListener {
         btnExit.setBounds(190, 290, 90, 30);
         frame.add(btnExit);
 
-        // Set Login button as default button
+        // Set Create button as default button
         // Set the frame visible
         frame.getRootPane().setDefaultButton(btnCreate);
         frame.setVisible(true);
@@ -100,7 +100,7 @@ public class Register extends JFrame implements ActionListener {
             System.exit(0);
         }
 
-        // Initiate login process if Login button clicked
+        // Initiate create account process if Login button clicked
         else if (e.getSource() == btnCreate) {
 
             // Create a new user using text input
