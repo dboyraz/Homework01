@@ -61,7 +61,7 @@ public class Server extends Thread {
             OutputStream os = socket.getOutputStream();
             DataOutputStream dos = new DataOutputStream(os);
 
-            //dos.writeUTF("Name of the customer requested by the client is : " + this.getCustomer(socket));
+
             dos.writeUTF(getCustomer(socket));
         } catch (Exception e) {
 
@@ -78,7 +78,7 @@ public class Server extends Thread {
             ServerSocket server = new ServerSocket(this.port);
             Socket socket;
 
-            System.out.println("Server is running...");
+            System.out.println("Login successful, starting the server...");
 
             while (true) {
 

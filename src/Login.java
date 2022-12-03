@@ -14,6 +14,8 @@ public class Login extends JFrame implements ActionListener {
     private JPasswordField txtPassword;
     private Font font, fontTitle, fontButton;
     private Color clrText;
+    private ArrayList<Customer> customers;
+    private ReaderHelper reader;
 
 
     // Constructor
@@ -163,7 +165,7 @@ public class Login extends JFrame implements ActionListener {
             }
         }
 
-        // if success flag is true, login
+        // if success flag is true, login and start server
         // else if wrong password flag is true, show error message
         // else ask for registration
         if (isLogged) {
@@ -173,13 +175,13 @@ public class Login extends JFrame implements ActionListener {
                     "\nPress OK to proceed.";
             JOptionPane.showMessageDialog(null, successMessage, "Welcome", JOptionPane.INFORMATION_MESSAGE);
 
-            // Initiate server
-            ArrayList<Customer> ct = new ArrayList<Customer>();
-            ct.add(new Customer(1, "Recep", "Istanbul", "212", "34 XX 001", "Renault"));
-            ct.add(new Customer(2, "Ahmet", "Istanbul", "212", "34 X 100", "Honda"));
-            ct.add(new Customer(3, "Mehmet", "Istanbul", "212", "34 Y 200", "Mitsubishi"));
+            // Read customers from text file
+            customers = new ArrayList<Customer>();
+            reader = new ReaderHelper();
+            reader.ReadAndWrite(customers, Main.FILE_LOCATION);
 
-            Server server = new Server(Main.PORT, ct);
+            // Initiate server
+            Server server = new Server(Main.PORT, customers);
             server.start();
 
             new MyFrame(username);
