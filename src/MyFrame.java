@@ -226,6 +226,13 @@ public class MyFrame extends JFrame implements ActionListener, Runnable {
 
             // Opens Overview page
             new OverviewPanel();
+
+        } else if (e.getSource() == btnCustomers) {
+
+            // Starts the client using global port constant
+            Client client = new Client(Main.PORT);
+            client.start();
+
         }
 
 

@@ -11,6 +11,7 @@ public class Main {
     public static List<User> users = new ArrayList<User>();
     public static List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
     public final static int MAX_PARKING_LOTS = 5;
+    public final static int PORT = 6001;
 
 
     public static void main(String[] args) {

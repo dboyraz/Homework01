@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Login extends JFrame implements ActionListener {
 
@@ -171,6 +172,15 @@ public class Login extends JFrame implements ActionListener {
                     "\nParking Lot Manager is an application that will help you run your establishment." +
                     "\nPress OK to proceed.";
             JOptionPane.showMessageDialog(null, successMessage, "Welcome", JOptionPane.INFORMATION_MESSAGE);
+
+            // Initiate server
+            ArrayList<Customer> ct = new ArrayList<Customer>();
+            ct.add(new Customer(1, "Recep", "Istanbul", "212", "34 XX 001", "Renault"));
+            ct.add(new Customer(2, "Ahmet", "Istanbul", "212", "34 X 100", "Honda"));
+            ct.add(new Customer(3, "Mehmet", "Istanbul", "212", "34 Y 200", "Mitsubishi"));
+
+            Server server = new Server(Main.PORT, ct);
+            server.start();
 
             new MyFrame(username);
             frame.dispose();
